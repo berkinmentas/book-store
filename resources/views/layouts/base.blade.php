@@ -20,14 +20,10 @@
     <nav class="bg-white shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
-                <!-- Logo Alanı -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/" class="text-xl font-bold text-indigo-600">Kitap Pazarı</a>
                 </div>
-
-                <!-- Tablet ve Masaüstü Menüsü -->
                 <div class="hidden md:flex md:items-center md:space-x-4">
-                    <!-- Kitap Türleri Dropdownları -->
                     <div class="relative group">
                         <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
                             Roman
@@ -37,10 +33,10 @@
                         </button>
                         <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
                             <div class="py-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Polisiye Roman</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tarihî Roman</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Macera Romanı</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bilim Kurgu</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Polisiye Roman</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tarihî Roman</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Macera Romanı</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bilim Kurgu</a>
                             </div>
                         </div>
                     </div>
@@ -54,9 +50,9 @@
                         </button>
                         <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
                             <div class="py-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kısa Hikayeler</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çocuk Hikayeleri</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Klasik Hikayeler</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kısa Hikayeler</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çocuk Hikayeleri</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Klasik Hikayeler</a>
                             </div>
                         </div>
                     </div>
@@ -70,10 +66,10 @@
                         </button>
                         <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
                             <div class="py-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Motivasyon</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kariyer</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Liderlik</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Psikoloji</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Motivasyon</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kariyer</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Liderlik</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Psikoloji</a>
                             </div>
                         </div>
                     </div>
@@ -87,18 +83,17 @@
                         </button>
                         <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
                             <div class="py-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Biyografi</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Şiir</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tarih</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bilim</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Felsefe</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çocuk Kitapları</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Biyografi</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Şiir</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tarih</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bilim</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Felsefe</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çocuk Kitapları</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Kullanıcı Profil Dropdown -->
                 <div class="hidden md:flex md:items-center">
                     <div class="relative ml-3 group">
                         <button class="flex items-center text-sm rounded-full focus:outline-none">
@@ -109,18 +104,17 @@
                         </button>
                         <div class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
                             <div class="py-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profilimi Düzenle</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Siparişlerim</a>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Favorilerim</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profilimi Düzenle</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Siparişlerim</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Favorilerim</a>
                                 <hr class="my-1">
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çıkış Yap</a>
+                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çıkış Yap</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mobil Menü Butonu -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -131,7 +125,6 @@
             </div>
         </div>
 
-        <!-- Mobil Menü (Sidebar) -->
         <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-40">
             <div class="fixed inset-y-0 left-0 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out">
                 <div class="flex items-center justify-between h-16 px-4 border-b">
@@ -144,7 +137,6 @@
                 </div>
 
                 <div class="overflow-y-auto h-full pb-20">
-                    <!-- Profil Bilgisi -->
                     <div class="px-4 py-3 border-b">
                         <div class="flex items-center">
                             <img class="h-10 w-10 rounded-full mr-3" src="https://via.placeholder.com/40" alt="Kullanıcı">
@@ -155,10 +147,8 @@
                         </div>
                     </div>
 
-                    <!-- Kitap Kategorileri -->
                     <div class="px-2 py-3">
                         <div class="space-y-1">
-                            <!-- Roman Dropdown -->
                             <div x-data="{ open: false }">
                                 <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
                                     <span>Roman</span>
@@ -167,14 +157,13 @@
                                     </svg>
                                 </button>
                                 <div x-show="open" class="pl-4 mt-1 space-y-1">
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Polisiye Roman</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Tarihî Roman</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Macera Romanı</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Bilim Kurgu</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Polisiye Roman</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Tarihî Roman</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Macera Romanı</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Bilim Kurgu</a>
                                 </div>
                             </div>
 
-                            <!-- Hikaye Dropdown -->
                             <div x-data="{ open: false }">
                                 <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
                                     <span>Hikaye</span>
@@ -183,13 +172,12 @@
                                     </svg>
                                 </button>
                                 <div x-show="open" class="pl-4 mt-1 space-y-1">
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Kısa Hikayeler</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Çocuk Hikayeleri</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Klasik Hikayeler</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Kısa Hikayeler</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Çocuk Hikayeleri</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Klasik Hikayeler</a>
                                 </div>
                             </div>
 
-                            <!-- Kişisel Gelişim Dropdown -->
                             <div x-data="{ open: false }">
                                 <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
                                     <span>Kişisel Gelişim</span>
@@ -198,14 +186,13 @@
                                     </svg>
                                 </button>
                                 <div x-show="open" class="pl-4 mt-1 space-y-1">
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Motivasyon</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Kariyer</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Liderlik</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Psikoloji</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Motivasyon</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Kariyer</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Liderlik</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Psikoloji</a>
                                 </div>
                             </div>
 
-                            <!-- Diğer Dropdown -->
                             <div x-data="{ open: false }">
                                 <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
                                     <span>Diğer</span>
@@ -214,26 +201,25 @@
                                     </svg>
                                 </button>
                                 <div x-show="open" class="pl-4 mt-1 space-y-1">
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Biyografi</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Şiir</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Tarih</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Bilim</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Felsefe</a>
-                                    <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Çocuk Kitapları</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Biyografi</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Şiir</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Tarih</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Bilim</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Felsefe</a>
+                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Çocuk Kitapları</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Kullanıcı İşlemleri -->
                     <div class="border-t px-2 py-3">
                         <div class="space-y-1">
-                            <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Profil</a>
-                            <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Profilimi Düzenle</a>
-                            <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Siparişlerim</a>
-                            <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Favorilerim</a>
+                            <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Profil</a>
+                            <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Profilimi Düzenle</a>
+                            <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Siparişlerim</a>
+                            <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Favorilerim</a>
                             <hr class="my-1">
-                            <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Çıkış Yap</a>
+                            <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Çıkış Yap</a>
                         </div>
                     </div>
                 </div>
@@ -242,7 +228,6 @@
     </nav>
 
     <script>
-        // Sidebar açma/kapama işlevselliği
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const closeSidebarButton = document.getElementById('close-sidebar');
@@ -262,7 +247,6 @@
                 }, 300);
             });
 
-            // Sidebar dışına tıklama kontrolü
             mobileMenu.addEventListener('click', function(e) {
                 if (e.target === mobileMenu) {
                     document.querySelector('#mobile-menu > div').classList.add('-translate-x-full');
@@ -301,21 +285,48 @@
 </header>
 <section class="h-screen">
     @yield('body')
-
-</section>
-@stack('js-stack')
-
-<footer>
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto flex flex-col items-center space-y-4">
-            <p class="text-sm">© 2025 Your Company. All rights reserved.</p>
-            <div class="flex space-x-4">
-                <a href="#" class="hover:text-gray-400">Privacy Policy</a>
-                <a href="#" class="hover:text-gray-400">Terms of Service</a>
-                <a href="#" class="hover:text-gray-400">Contact</a>
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">KitapDünyası</h3>
+                    <p class="text-gray-300">İkinci el kitapların güvenilir adresi. Binlerce kitaba uygun fiyatlarla ulaşabilirsiniz.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Hızlı Erişim</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Ana Sayfa</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Kategoriler</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">En Çok Satanlar</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Yeni Eklenenler</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Yardım</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white">Sipariş Takibi</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">İade Koşulları</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">Sıkça Sorulan Sorular</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white">İletişim</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Bültenimize Abone Olun</h3>
+                    <p class="text-gray-300 mb-3">Yeni eklenen kitaplardan haberdar olun</p>
+                    <div class="flex">
+                        <input type="email" placeholder="E-posta adresiniz" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-gray-800">
+                        <button class="bg-blue-600 px-4 py-2 rounded-r-lg hover:bg-blue-700 transition duration-300">Abone Ol</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 KitapDünyası - Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>
-</footer>
+</section>
+@stack('js-stack')
+
+
 </body>
 </html>
