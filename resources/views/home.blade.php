@@ -4,7 +4,7 @@
         <div class="banner h-96 shadow-lg flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
             <div class="w-96 h-96">
                 <img class="h-full w-full"
-                     src="{{\Illuminate\Support\Facades\Vite::asset("/resources/images/book.png")}}" alt="book image">
+                     src="{{\Illuminate\Support\Facades\Vite::asset("resources/images/book.png")}}" alt="book image">
             </div>
             <div class="font-extrabold text-[4rem] text-white">
                 <div>
