@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
-    <section class="container mx-auto my-5 bg-gray-50 min-h-screen">
-        <div class="banner h-96 shadow-lg flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+    <section class="container mx-auto my-5  min-h-screen">
+        <div class="banner h-96 shadow-lg flex items-center justify-center bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-xl">
             <div class="w-96 h-96">
                 <img class="h-full w-full"
                      src="{{\Illuminate\Support\Facades\Vite::asset("resources/images/book.png")}}" alt="book image">
@@ -26,10 +26,10 @@
                 <div class="swiper bestsellers-slider">
                     <div class="swiper-wrapper">
                         @for ($i = 1; $i <= 8; $i++)
-                            <div class="swiper-slide">
-                                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                                    <img src="https://picsum.photos/220/300?random={{ $i }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover">
-                                    <div class="p-4">
+                            <div class="swiper-slide py-5">
+                                <div class="bg-white shadow-md py-3 rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                                    <img src="https://picsum.photos/220/300?random={{ $i }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
+                                    <div class="p-4 roundex-xl">
                                         <h3 class="font-semibold mb-1 text-gray-800">Kitap Başlığı {{ $i }}</h3>
                                         <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
                                         <div class="flex justify-between items-center">
@@ -49,7 +49,6 @@
                             </div>
                         @endfor
                     </div>
-                    <div class="swiper-pagination bestsellers-pagination"></div>
                     <div class="swiper-button-next bestsellers-next"></div>
                     <div class="swiper-button-prev bestsellers-prev"></div>
                 </div>
@@ -60,7 +59,7 @@
                 <div class="swiper new-arrivals-slider">
                     <div class="swiper-wrapper">
                         @for ($i = 1; $i <= 8; $i++)
-                            <div class="swiper-slide">
+                            <div class="swiper-slide py-5">
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                                     <div class="relative">
                                         <img src="https://picsum.photos/220/300?random={{ $i + 10 }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover">
@@ -83,7 +82,6 @@
                             </div>
                         @endfor
                     </div>
-                    <div class="swiper-pagination new-arrivals-pagination"></div>
                     <div class="swiper-button-next new-arrivals-next"></div>
                     <div class="swiper-button-prev new-arrivals-prev"></div>
                 </div>
@@ -107,7 +105,7 @@
                 <div class="swiper discover-slider">
                     <div class="swiper-wrapper">
                         @for ($i = 1; $i <= 8; $i++)
-                            <div class="swiper-slide">
+                            <div class="swiper-slide py-5">
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
                                     <img src="https://picsum.photos/220/300?random={{ $i + 20 }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover">
                                     <div class="p-4 flex-grow">
@@ -128,7 +126,6 @@
                             </div>
                         @endfor
                     </div>
-                    <div class="swiper-pagination discover-pagination"></div>
                     <div class="swiper-button-next discover-next"></div>
                     <div class="swiper-button-prev discover-prev"></div>
                 </div>
