@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import path from 'node:path'
 
 export default defineConfig({
     plugins: [
@@ -8,4 +9,12 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            'jquery': path.resolve(__dirname, 'node_modules/jquery'),
+            'sweetalert2': path.resolve(__dirname, 'node_modules/sweetalert2'),
+            '~swiper': path.resolve(__dirname, 'node_modules/swiper'),
+            'tinymce': path.resolve(__dirname, 'node_modules/tinymce'),
+        }
+    },
 });
