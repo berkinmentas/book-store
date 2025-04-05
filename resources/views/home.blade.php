@@ -3,10 +3,9 @@
     <section class="container mx-auto my-5  min-h-screen">
         <div class="banner h-96 shadow-lg flex items-center justify-center bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-xl">
             <div class="w-96 h-96">
-                <img class="h-full w-full"
-                     src="{{\Illuminate\Support\Facades\Vite::asset("resources/images/book.png")}}" alt="book image">
+                <img class="h-full w-full" src="{{\Illuminate\Support\Facades\Vite::asset("resources/images/book.png")}}" alt="book image">
             </div>
-            <div class="font-extrabold text-[4rem] text-white">
+            <div class="font-extrabold text-[2rem] text-white md:text-[3rem] lg:text-[4rem]">
                 <div>
                     Yenilikçi
                 </div>
@@ -18,9 +17,7 @@
                 </div>
             </div>
         </div>
-
         <div class="container mx-auto px-4 py-12">
-
             <div class="mb-12">
                 <h2 class="text-2xl font-bold mb-6 text-gray-800">En Çok Satan Kitaplar</h2>
                 <div class="swiper bestsellers-slider">

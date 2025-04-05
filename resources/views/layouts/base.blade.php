@@ -25,84 +25,31 @@
                 </div>
                 <div class="hidden md:flex md:items-center md:space-x-4">
                     <div class="relative group">
-                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
-                            Roman
-                            <svg class="w-4 h-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
-                            <div class="py-1">
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Polisiye Roman</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tarihî Roman</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Macera Romanı</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bilim Kurgu</a>
-                            </div>
-                        </div>
+                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Roman</button>
                     </div>
 
                     <div class="relative group">
-                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
-                            Hikaye
-                            <svg class="w-4 h-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
-                            <div class="py-1">
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kısa Hikayeler</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çocuk Hikayeleri</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Klasik Hikayeler</a>
-                            </div>
-                        </div>
+                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Hikaye</button>
                     </div>
 
                     <div class="relative group">
-                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
-                            Kişisel Gelişim
-                            <svg class="w-4 h-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
-                            <div class="py-1">
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Motivasyon</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Kariyer</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Liderlik</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Psikoloji</a>
-                            </div>
-                        </div>
+                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Kişisel Gelişim</button>
                     </div>
 
                     <div class="relative group">
-                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">
-                            Diğer
-                            <svg class="w-4 h-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                            </svg>
-                        </button>
-                        <div class="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
-                            <div class="py-1">
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Biyografi</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Şiir</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Tarih</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Bilim</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Felsefe</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çocuk Kitapları</a>
-                            </div>
-                        </div>
+                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Diğer</button>
                     </div>
                 </div>
 
                 <div class="hidden md:flex md:items-center">
                     <div class="relative ml-3 group">
                         <button class="flex items-center text-sm rounded-full focus:outline-none">
-                            <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/40" alt="Kullanıcı">
+                            <img class="h-8 w-8 rounded-full" src="{{\Illuminate\Support\Facades\Vite::asset("resources/images/avatar.svg")}}" alt="Kullanıcı">
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </button>
-                        <div class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
+                        <div class="absolute right-0  w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
                             <div class="py-1">
                                 <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil</a>
                                 <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profilimi Düzenle</a>
@@ -139,7 +86,7 @@
                 <div class="overflow-y-auto h-full pb-20">
                     <div class="px-4 py-3 border-b">
                         <div class="flex items-center">
-                            <img class="h-10 w-10 rounded-full mr-3" src="https://via.placeholder.com/40" alt="Kullanıcı">
+                            <img class="h-10 w-10 rounded-full mr-3" src="{{\Illuminate\Support\Facades\Vite::asset("resources/images/avatar.svg")}}" alt="Kullanıcı">
                             <div>
                                 <div class="text-sm font-medium text-gray-900">Kullanıcı Adı</div>
                                 <div class="text-xs text-gray-500">kullanici@email.com</div>
@@ -149,65 +96,28 @@
 
                     <div class="px-2 py-3">
                         <div class="space-y-1">
-                            <div x-data="{ open: false }">
-                                <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                            <div>
+                                <button class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
                                     <span>Roman</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
                                 </button>
-                                <div x-show="open" class="pl-4 mt-1 space-y-1">
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Polisiye Roman</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Tarihî Roman</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Macera Romanı</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Bilim Kurgu</a>
-                                </div>
                             </div>
 
-                            <div x-data="{ open: false }">
-                                <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                            <div>
+                                <button class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
                                     <span>Hikaye</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
                                 </button>
-                                <div x-show="open" class="pl-4 mt-1 space-y-1">
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Kısa Hikayeler</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Çocuk Hikayeleri</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Klasik Hikayeler</a>
-                                </div>
                             </div>
 
-                            <div x-data="{ open: false }">
+                            <div>
                                 <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
                                     <span>Kişisel Gelişim</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
                                 </button>
-                                <div x-show="open" class="pl-4 mt-1 space-y-1">
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Motivasyon</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Kariyer</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Liderlik</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Psikoloji</a>
-                                </div>
                             </div>
 
-                            <div x-data="{ open: false }">
-                                <button @click="open = !open" class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                            <div>
+                                <button class="w-full flex justify-between items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">
                                     <span>Diğer</span>
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
                                 </button>
-                                <div x-show="open" class="pl-4 mt-1 space-y-1">
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Biyografi</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Şiir</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Tarih</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Bilim</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Felsefe</a>
-                                    <a href="{{route('comingSoon')}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Çocuk Kitapları</a>
-                                </div>
                             </div>
                         </div>
                     </div>
