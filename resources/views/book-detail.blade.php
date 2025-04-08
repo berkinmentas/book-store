@@ -76,8 +76,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- İlgili Kitaplar Bölümü -->
                 <div class="p-6 border-t border-gray-200 mt-8">
                     <h2 class="text-2xl font-bold mb-6 text-gray-800">Benzer Kitaplar</h2>
                     <div class="swiper bestsellers-slider">
