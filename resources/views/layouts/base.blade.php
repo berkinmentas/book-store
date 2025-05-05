@@ -25,19 +25,19 @@
                 </div>
                 <div class="hidden md:flex md:items-center md:space-x-4">
                     <div class="relative group">
-                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Roman</button>
+                        <a href="{{route("category")}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Roman</a>
                     </div>
 
                     <div class="relative group">
-                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Hikaye</button>
+                        <a href="{{route("category")}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Hikaye</a>
                     </div>
 
                     <div class="relative group">
-                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Kişisel Gelişim</button>
+                        <a href="{{route("category")}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Kişisel Gelişim</a>
                     </div>
 
                     <div class="relative group">
-                        <button class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Diğer</button>
+                        <a href="{{route("category")}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Diğer</a>
                     </div>
                 </div>
 

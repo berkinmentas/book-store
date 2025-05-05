@@ -27,7 +27,9 @@
                                 <div class="bg-white shadow-md py-3 rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
                                     <img src="https://picsum.photos/220/300?random={{ $i }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
                                     <div class="p-4 roundex-xl">
-                                        <h3 class="font-semibold mb-1 text-gray-800">Kitap Başlığı {{ $i }}</h3>
+                                        <a href="{{route('bookDetail')}}">
+                                            <h3 class="font-semibold mb-1 text-gray-800">Kitap Başlığı {{ $i }}</h3>
+                                        </a>
                                         <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
                                         <div class="flex justify-between items-center">
                                             <span class="font-bold text-blue-600">{{ rand(15, 75) }} ₺</span>
@@ -65,7 +67,9 @@
                                         </div>
                                     </div>
                                     <div class="p-4">
-                                        <h3 class="font-semibold mb-1 text-gray-800">Yeni Kitap {{ $i }}</h3>
+                                        <a href="{{route('bookDetail')}}">
+                                            <h3 class="font-semibold mb-1 text-gray-800">Yeni Kitap {{ $i }}</h3>
+                                        </a>
                                         <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
                                         <div class="flex justify-between items-center">
                                             <span class="font-bold text-blue-600">{{ rand(15, 75) }} ₺</span>
@@ -88,7 +92,7 @@
                 <h2 class="text-2xl font-bold mb-6 text-gray-800">Popüler Kategoriler</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                     @foreach (['Roman', 'Şiir', 'Tarih', 'Bilim', 'Felsefe', 'Kişisel Gelişim', 'Çocuk Kitapları', 'Akademik'] as $category)
-                        <a href="#"
+                        <a href="{{route('category')}}"
                            class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
                             <h3 class="font-semibold text-lg text-gray-800">{{ $category }}</h3>
                             <p class="text-sm text-gray-600 mt-1">{{ rand(50, 500) }} Kitap</p>
@@ -106,7 +110,9 @@
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
                                     <img src="https://picsum.photos/220/300?random={{ $i + 20 }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover">
                                     <div class="p-4 flex-grow">
-                                        <h3 class="font-semibold mb-1 text-gray-800">Random Kitap {{ $i }}</h3>
+                                        <a href="{{route('bookDetail')}}">
+                                            <h3 class="font-semibold mb-1 text-gray-800">Random Kitap {{ $i }}</h3>
+                                        </a>
                                         <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
                                         <p class="text-sm text-gray-700 mb-3 line-clamp-3">Lorem ipsum dolor sit amet,
                                             consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore

@@ -3,7 +3,7 @@
     <section class="container mx-auto my-5 min-h-screen">
         <div class="container mx-auto px-4 py-12">
             <div class="bg-white shadow-lg rounded-xl overflow-hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
                     <div class="flex justify-center items-center h-36">
                         <img src="{{ $book->image ?? 'https://picsum.photos/400/600?random=' . rand(1,40) }}"
                              alt="{{ $book->title ?? 'Kitap Görseli' }}"
@@ -35,14 +35,14 @@
                                     <span class="text-gray-700 ml-1">{{ $book->rating ?? '4.5' }}/5</span>
                                 </div>
                             </div>
-                            <div class="mb-4">
-                                <p class="text-lg text-gray-600">
+                            <div class="mb-4 ">
+                                <p class="text-gray-600 text-sm md:text-lg">
                                     <span class="font-semibold">Yazar:</span> {{ $book->author ?? 'Yazar Adı' }}
                                 </p>
-                                <p class="text-lg text-gray-600">
+                                <p class="text-gray-600 text-sm md:text-lg">
                                     <span class="font-semibold">Sayfa Sayısı:</span> {{ $book->pages ?? '256' }} sayfa
                                 </p>
-                                <p class="text-lg text-gray-600">
+                                <p class=" text-gray-600 text-sm md:text-lg">
                                     <span class="font-semibold">Kategori:</span> {{ $book->category ?? 'Roman' }}
                                 </p>
                             </div>
@@ -51,7 +51,7 @@
 
                         <div class="mb-6">
                             <h3 class="text-xl font-semibold text-gray-800 mb-2">Kitap Özeti</h3>
-                            <p class="text-gray-600 leading-relaxed">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-lg">
                                 {{ $book->summary ?? 'Bu kitap, okuyucuları sürükleyici bir maceranın içine çeken etkileyici bir hikaye sunuyor. Karakterlerin derinliği ve olayların akışı, okuyucuları ilk sayfadan son sayfaya kadar kendine bağlıyor. Kitabın ana teması, insanın kendini keşfetme yolculuğu ve hayatta karşılaştığı zorluklarla yüzleşmesi üzerine kurulu.' }}
                             </p>
                         </div>

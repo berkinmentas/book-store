@@ -11,3 +11,5 @@ Route::get('/category/name', function () { return view('category');})->name('cat
 Route::get('/coming-soon', function () { return view('coming-soon'); })->name('comingSoon');
 
 Route::get('/book-detail', function () { return view('book-detail'); })->name('bookDetail');
+
+Route::get('/test', function () { return view('test'); })->name('test');
