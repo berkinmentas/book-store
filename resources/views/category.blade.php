@@ -21,7 +21,9 @@
                     <div class="bg-white shadow-md py-3 rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
                         <img src="https://picsum.photos/220/300?random={{ rand(1,40) }}" alt="Kitap {{ rand(1,40) }}" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
                         <div class="p-4 roundex-xl">
-                            <h3 class="font-semibold mb-1 text-gray-800">Kitap Başlığı {{ rand(1,40) }}</h3>
+                            <a href="{{route('bookDetail')}}">
+                                <h3 class="font-semibold mb-1 text-gray-800">Kitap Başlığı {{ rand(1,40) }}</h3>
+                            </a>
                             <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
                             <div class="flex justify-between items-center">
                                 <span class="font-bold text-blue-600">{{ rand(15, 75) }} ₺</span>
