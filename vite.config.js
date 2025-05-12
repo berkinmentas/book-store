@@ -5,7 +5,7 @@ import path from 'node:path'
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/scss/app.scss', 'resources/js/app.js'],
+            input: ['resources/scss/app.scss', 'resources/js/app.js', 'resources/admin/scss/app.scss', 'resources/admin/js/app.js'],
             refresh: true,
         }),
     ],
@@ -15,6 +15,7 @@ export default defineConfig({
             'sweetalert2': path.resolve(__dirname, 'node_modules/sweetalert2'),
             '~swiper': path.resolve(__dirname, 'node_modules/swiper'),
             'tinymce': path.resolve(__dirname, 'node_modules/tinymce'),
+            '~selectize/selectize': path.resolve(__dirname, 'node_modules/selectize'),
         }
     },
 });

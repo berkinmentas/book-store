@@ -13,3 +13,5 @@ Route::get('/coming-soon', function () { return view('coming-soon'); })->name('c
 Route::get('/book-detail', function () { return view('book-detail'); })->name('bookDetail');
 
 Route::get('/test', function () { return view('test'); })->name('test');
+
+include 'admin.php';
