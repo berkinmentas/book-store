@@ -3,183 +3,287 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Courses\StoreRequest;
-use App\Http\Requests\Admin\Courses\UpdateRequest;
-use App\Models\Course;
-use App\Models\Teacher;
-use App\Models\TeacherCourse;
+use App\Http\Requests\Admin\Book\StoreRequest;
+use App\Http\Requests\Admin\Book\UpdateRequest;
+use App\Models\Book;
+use App\Helpers\Helper;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
-use App\helpers\Helper;
-
+use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Gate;
 
 class BookController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
      */
     public function index()
     {
         return view('admin.books.index');
     }
-    public function datatable() {
 
-        $model = Course::query();
+    /**
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function datatable()
+    {
+        try {
+            $model = Book::query()->select([
+                'id',
+                'title',
+                'category',
+                'author',
+                'publisher',
+                'price',
+                'created_at',
+                'updated_at'
+            ]);
 
-        return DataTables::eloquent($model)
-            ->addColumn('actions', function(Course $course) {
-                $action = '<a class="btn btn-outline-primary btn-sm btn-action me-3" href="'.route('admin.books.edit', ['course' => $course]).'">'.__('Görüntüle').'</a>';
-                $action .= '<a data-id="' . $course->id . '" data-url="' . route('admin.books.destroy', ['course' => $course]) . '" role="button" class="btn btn-outline-danger btn-sm btn-delete">'.__('Sil').'</a>';
+            return DataTables::eloquent($model)
+                ->addColumn('actions', function(Book $book) {
+                    // XSS koruması için htmlspecialchars ekledim.
+                    $editUrl = htmlspecialchars(route('admin.books.edit', ['book' => $book->id]), ENT_QUOTES, 'UTF-8');
+                    $deleteUrl = htmlspecialchars(route('admin.books.destroy', ['book' => $book->id]), ENT_QUOTES, 'UTF-8');
 
-                return $action;
-            })
-            ->rawColumns(['id', 'title', 'category', 'actions'])
-            ->make();
+                    $action = '<a class="text-blue-600 hover:text-blue-800 underline mr-3" href="'.$editUrl.'">'.__('Görüntüle').'</a>';
+                    $action .= '<button data-id="' . $book->id . '" data-url="' . $deleteUrl . '" class="text-red-600 hover:text-red-800 underline btn-delete">'.__('Sil').'</button>';
+
+                    return $action;
+                })
+                ->addColumn('price_formatted', function(Book $book) {
+                    return number_format((float)$book->price, 2, ',', '.') . ' ₺';
+                })
+                ->addColumn('created_at_formatted', function(Book $book) {
+                    return $book->created_at->format('d.m.Y H:i');
+                })
+                ->escapeColumns(['title', 'category', 'author', 'publisher']) // XSS koruması için
+                ->rawColumns(['actions'])
+                ->make(true);
+        } catch (\Exception $e) {
+            Log::error('Book datatable error: ' . $e->getMessage());
+            return response()->json(['error' => 'Veri listelenirken bir hata oluştu.'], 500);
+        }
     }
 
     /**
-     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        $teachers = Teacher::query()
-            ->get();
-        return view('admin.books.create',[
-            'teachers' => $teachers
-        ]);
+        return view('admin.books.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     *
+     * @param  StoreRequest  $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StoreRequest $request)
     {
-
         DB::beginTransaction();
+
         try {
-            $req = $request->validated();
+            $validated = $request->validated();
 
-            $course = Course::query()
-                ->create([
-                    'title'=>$req['title'],
-                    'group' => $req['group'],
-                    'description'=> $req['description'],
-                    'short_description'=> $req['short_description'],
-                    'category'=> $req['category'],
-                    'number_of_lesson'=> $req['number_of_lesson'],
-                    'total_lesson_time'=> $req['total_lesson_time'],
-                    'information' => $req['information']
-                ]);
-
-            if($req['teacher']){
-                foreach($req['teacher'] as $teacher) {
-                    $teacherCourse = TeacherCourse::create([
-                        'teacher_id' => $teacher,
-                        'course_id' => $course->id,
-                    ]);
-                }
-            }
-
-            if ($request->has('logo') && count($request->logo) == 1) {
-                foreach ($request->logo as $document) {
-                    Helper::handleUploadedSingleFile($course, $document, 'logo');
-                }
-            }
-
-            if(!$course)
-                throw new \Exception(__('Oluşturulamadı'));
-
-            DB::commit();
-        } catch(\Exception $exception) {
-            DB::rollBack();
-            throw ValidationException::withMessages([$exception->getMessage()]);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Course $course)
-    {
-
-        $teachers = Teacher::query()
-            ->get();
-        return view('admin.books.edit', [
-            'course' => $course,
-            'teachers' => $teachers
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRequest $request, Course $course)
-    {
-        DB::beginTransaction();
-        try {
-            $req = $request->validated();
-            $updated = $course->update([
-                'title' => $req["title"],
-                'group' => $req["group"],
-                'description' => $req["description"],
-                'short_description' => $req["short_description"],
-                'category' => $req["category"],
-                'number_of_lesson' => $req["number_of_lesson"],
-                'total_lesson_time' => $req["total_lesson_time"],
-                'information' => $req['information']
+            $book = Book::create([
+                'title' => $validated['title'],
+                'category' => $validated['category'],
+                'author' => $validated['author'] ?? null,
+                'publisher' => $validated['publisher'] ?? null,
+                'year' => $validated['year'] ?? null,
+                'page_count' => $validated['page_count'] ?? null,
+                'short_description' => $validated['short_description'] ?? null,
+                'description' => $validated['description'] ?? null,
+                'price' => $validated['price'] ?? null,
             ]);
 
-            if($request->teacher) {
-                TeacherCourse::query()
-                    ->where('course_id', $course->id)
-                    ->delete();
-
-
-                foreach ($req["teacher"] as $teacher) {
-                    $teacherCourse = TeacherCourse::create([
-                       'teacher_id' => $teacher,
-                       'course_id' => $course->id
-                    ]);
+            if ($request->has('book_cover') && count($request->book_cover) == 1) {
+                foreach ($request->book_cover as $document) {
+                    Helper::handleUploadedSingleFile($book, $document, 'book_cover');
                 }
             }
-            if (!$updated) {
-                throw new \Exception(__('Güncellenemedi'));
-            }
 
-            if ($request->has('logo') && count($request->logo) == 1) {
-                foreach ($request->logo as $document) {
-                    Helper::handleUploadedSingleFile($course, $document, 'logo');
-                }
+            if (!$book) {
+                throw new \Exception(__('Kitap oluşturulamadı.'));
             }
 
             DB::commit();
-        } catch(\Exception $exception) {
-            DB::rollBack();
-            throw ValidationException::withMessages([$exception->getMessage()]);
-        }
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Course $course)
-    {
-        try {
-            $course->delete();
+            return response()->json([
+                'success' => true,
+                'message' => __('Kitap başarıyla oluşturuldu.')
+            ], 200);
 
         } catch (\Exception $exception) {
             DB::rollBack();
-            throw ValidationException::withMessages([__('Silinemedi.')]);
+
+            Log::error('Book creation error: ' . $exception->getMessage());
+
+            throw ValidationException::withMessages(['error' => $exception->getMessage()]);
+        }
+    }
+
+    /**
+     *
+     * @param  string  $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|object
+     */
+    public function show(string $id)
+    {
+        try {
+
+            $book = Book::findOrFail($id);
+
+            return view('admin.books.show', compact('book'));
+
+        } catch (\Exception $e) {
+            Log::error('Book show error: ' . $e->getMessage());
+            abort(500, 'Kitap görüntülenirken bir hata oluştu.');
+        }
+    }
+
+    /**
+     *
+     * @param  Book  $book
+     * @return \Illuminate\View\View
+     */
+    public function edit(Book $book)
+    {
+        try {
+            return view('admin.books.edit', [
+                'book' => $book,
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Book edit error: ' . $e->getMessage());
+            abort(500, 'Kitap düzenleme sayfası yüklenirken bir hata oluştu.');
+        }
+    }
+
+    /**
+     *
+     * @param  UpdateRequest  $request
+     * @param  Book  $book
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(UpdateRequest $request, Book $book)
+    {
+        DB::beginTransaction();
+
+        try {
+            $validated = $request->validated();
+
+            $updated = $book->update([
+                'title' => $validated['title'],
+                'category' => $validated['category'],
+                'author' => $validated['author'] ?? $book->author,
+                'publisher' => $validated['publisher'] ?? $book->publisher,
+                'year' => $validated['year'] ?? $book->year,
+                'page_count' => $validated['page_count'] ?? $book->page_count,
+                'short_description' => $validated['short_description'] ?? $book->short_description,
+                'description' => $validated['description'] ?? $book->description,
+                'price' => $validated['price'] ?? $book->price,
+            ]);
+
+            if (!$updated) {
+                throw new \Exception(__('Kitap güncellenemedi.'));
+            }
+
+            if ($request->has('book_cover') && count($request->book_cover) == 1) {
+                foreach ($request->book_cover as $document) {
+                    Helper::handleUploadedSingleFile($book, $document, 'book_cover');
+                }
+            }
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => __('Kitap başarıyla güncellendi.')
+            ], 200);
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+
+            Log::error('Book update error: ' . $exception->getMessage());
+
+            throw ValidationException::withMessages(['error' => $exception->getMessage()]);
+        }
+    }
+
+    /**
+     *
+     * @param  Book  $book
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroy(Book $book)
+    {
+        DB::beginTransaction();
+
+        try {
+            if ($book->hasMedia('book_cover')) {
+                $book->clearMediaCollection('book_cover');
+            }
+
+            $deleted = $book->delete();
+
+            if (!$deleted) {
+                throw new \Exception(__('Kitap silinemedi.'));
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => __('Kitap başarıyla silindi.')
+            ], 200);
+
+        } catch (\Exception $exception) {
+            DB::rollBack();
+
+            Log::error('Book deletion error: ' . $exception->getMessage());
+
+            throw ValidationException::withMessages(['error' => __('Kitap silinemedi.')]);
+        }
+    }
+
+    /**
+     *
+     * @param Request $request
+     * @param Book $book
+     * @param string $collection
+     * @return void
+     */
+    private function validateAndUploadImage(Request $request, Book $book, string $collection)
+    {
+        try {
+            $file = $request->file('book_cover');
+
+            $maxFileSize = 5 * 1024 * 1024; // 5MB
+            $allowedMimes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+
+            if ($file->getSize() > $maxFileSize) {
+                throw new \Exception('Dosya boyutu çok büyük (max: 5MB).');
+            }
+
+            if (!in_array($file->getMimeType(), $allowedMimes)) {
+                throw new \Exception('Geçersiz dosya formatı. Sadece JPG, PNG ve WEBP formatları kabul edilir.');
+            }
+
+            $safeFileName = preg_replace('/[^a-z0-9]+/', '-', strtolower(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)));
+            $safeFileName = $safeFileName . '_' . time() . '.' . $file->getClientOriginalExtension();
+
+            $book->clearMediaCollection($collection);
+            $book->addMedia($file)
+                ->usingFileName($safeFileName)
+                ->toMediaCollection($collection);
+
+        } catch (\Exception $e) {
+            Log::error('File upload error: ' . $e->getMessage());
+            throw new \Exception('Dosya yüklenirken bir hata oluştu: ' . $e->getMessage());
         }
     }
 }
