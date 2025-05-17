@@ -22,17 +22,17 @@
                 <h2 class="text-2xl font-bold mb-6 text-gray-800">En Çok Satan Kitaplar</h2>
                 <div class="swiper bestsellers-slider">
                     <div class="swiper-wrapper">
-                        @for ($i = 1; $i <= 8; $i++)
+                        @foreach ($books as $book)
                             <div class="swiper-slide py-5">
                                 <div class="bg-white shadow-md py-3 rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                                    <img src="https://picsum.photos/220/300?random={{ $i }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
+                                    <img src="{{$book->getFirstMediaUrl('book_cover')}}" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
                                     <div class="p-4 roundex-xl">
-                                        <a href="{{route('bookDetail')}}">
-                                            <h3 class="font-semibold mb-1 text-gray-800">Kitap Başlığı {{ $i }}</h3>
+                                        <a href="{{route('bookDetail', $book->id)}}">
+                                            <h3 class="font-semibold mb-1 text-gray-800">{{$book->title}}</h3>
                                         </a>
-                                        <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
+                                        <p class="text-sm text-gray-600 mb-2">{{$book->author}}</p>
                                         <div class="flex justify-between items-center">
-                                            <span class="font-bold text-blue-600">{{ rand(15, 75) }} ₺</span>
+                                            <span class="font-bold text-blue-600">{{$book->price}} ₺</span>
                                             <div class="flex items-center">
                                             <span class="text-yellow-500 mr-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -42,11 +42,11 @@
                                                 <span class="text-gray-700">{{ rand(30, 50) / 10 }}</span>
                                             </div>
                                         </div>
-                                        <button class="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">Sepete Ekle</button>
+                                        <button data-id="{{ $book->id }}" class="add-to-cart w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">Sepete Ekle</button>
                                     </div>
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
                     <div class="swiper-button-next bestsellers-next"></div>
                     <div class="swiper-button-prev bestsellers-prev"></div>
@@ -57,23 +57,23 @@
                 <h2 class="text-2xl font-bold mb-6 text-gray-800">Yeni Eklenenler</h2>
                 <div class="swiper new-arrivals-slider">
                     <div class="swiper-wrapper">
-                        @for ($i = 1; $i <= 8; $i++)
+                        @foreach ($books->sortByDesc('created_at') as $book)
                             <div class="swiper-slide py-5">
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                                     <div class="relative">
-                                        <img src="https://picsum.photos/220/300?random={{ $i + 10 }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover">
+                                        <img src="{{$book->getFirstMediaUrl('book_cover')}}" alt="Kitap" class="w-full h-64 object-cover">
                                         <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 rounded-bl-lg text-sm font-semibold">
                                             Yeni
                                         </div>
                                     </div>
                                     <div class="p-4">
-                                        <a href="{{route('bookDetail')}}">
-                                            <h3 class="font-semibold mb-1 text-gray-800">Yeni Kitap {{ $i }}</h3>
+                                        <a href="{{route('bookDetail', $book->id)}}">
+                                            <h3 class="font-semibold mb-1 text-gray-800">{{$book->title}}</h3>
                                         </a>
-                                        <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
+                                        <p class="text-sm text-gray-600 mb-2">{{$book->author}}</p>
                                         <div class="flex justify-between items-center">
-                                            <span class="font-bold text-blue-600">{{ rand(15, 75) }} ₺</span>
-                                            <span class="text-sm text-gray-500">{{ rand(1, 10) }} gün önce</span>
+                                            <span class="font-bold text-blue-600">{{$book->price}} ₺</span>
+                                            <span class="text-sm text-gray-500">{{round($book->created_at->diffInDays(\Carbon\Carbon::today(), false))}} gün önce</span>
                                         </div>
                                         <button class="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
                                             Sepete Ekle
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
                     <div class="swiper-button-next new-arrivals-next"></div>
                     <div class="swiper-button-prev new-arrivals-prev"></div>
@@ -91,11 +91,11 @@
             <div class="mb-12">
                 <h2 class="text-2xl font-bold mb-6 text-gray-800">Popüler Kategoriler</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    @foreach (['Roman', 'Şiir', 'Tarih', 'Bilim', 'Felsefe', 'Kişisel Gelişim', 'Çocuk Kitapları', 'Akademik'] as $category)
-                        <a href="{{route('category')}}"
+                    @foreach ($categories as $category)
+                        <a href="{{route('category', $category->id)}}"
                            class="block p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-                            <h3 class="font-semibold text-lg text-gray-800">{{ $category }}</h3>
-                            <p class="text-sm text-gray-600 mt-1">{{ rand(50, 500) }} Kitap</p>
+                            <h3 class="font-semibold text-lg text-gray-800">{{ $category->title }}</h3>
+                            <p class="text-sm text-gray-600 mt-1">{{$category->bookCount() }} Kitap</p>
                         </a>
                     @endforeach
                 </div>
@@ -105,20 +105,18 @@
                 <h2 class="text-2xl font-bold mb-6 text-gray-800">Keşfedilmeyi Bekleyen Kitaplar</h2>
                 <div class="swiper discover-slider">
                     <div class="swiper-wrapper">
-                        @for ($i = 1; $i <= 8; $i++)
+                        @foreach ($books->shuffle()->take(8) as $book)
                             <div class="swiper-slide py-5">
                                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full">
-                                    <img src="https://picsum.photos/220/300?random={{ $i + 20 }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover">
+                                    <img src="{{$book->getFirstMediaUrl('book_cover')}}" alt="Kitap" class="w-full h-64 object-cover">
                                     <div class="p-4 flex-grow">
-                                        <a href="{{route('bookDetail')}}">
-                                            <h3 class="font-semibold mb-1 text-gray-800">Random Kitap {{ $i }}</h3>
+                                        <a href="{{route('bookDetail', $book->id)}}">
+                                            <h3 class="font-semibold mb-1 text-gray-800">{{$book->title}}</h3>
                                         </a>
-                                        <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
-                                        <p class="text-sm text-gray-700 mb-3 line-clamp-3">Lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-                                            magna aliqua.</p>
+                                        <p class="text-sm text-gray-600 mb-2">{{$book->author}}</p>
+                                        <p class="text-sm text-gray-700 mb-3 line-clamp-3">{!! $book->short_description !!}</p>
                                         <div class="flex justify-between items-center mt-auto">
-                                            <span class="font-bold text-blue-600">{{ rand(15, 75) }} ₺</span>
+                                            <span class="font-bold text-blue-600">{{ $book->price }} ₺</span>
                                             <span class="text-sm text-gray-500">Durum: {{ ['Çok İyi', 'İyi', 'Normal'][rand(0, 2)] }}</span>
                                         </div>
                                         <button class="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
@@ -127,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endfor
+                        @endforeach
                     </div>
                     <div class="swiper-button-next discover-next"></div>
                     <div class="swiper-button-prev discover-prev"></div>

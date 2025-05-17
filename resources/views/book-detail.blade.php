@@ -5,16 +5,16 @@
             <div class="bg-white shadow-lg rounded-xl overflow-hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
                     <div class="flex justify-center items-center h-36">
-                        <img src="{{ $book->image ?? 'https://picsum.photos/400/600?random=' . rand(1,40) }}"
-                             alt="{{ $book->title ?? 'Kitap Görseli' }}"
+                        <img src="{{ $book->getFirstMediaUrl('book_cover')}}"
+                             alt="Kitap Görseli"
                              class=" h-full object-cover rounded-xl shadow-md">
                     </div>
                     <div class="grid grid-cols-2">
                         <div>
-                            <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ $book->title ?? 'Kitap Başlığı' }}</h1>
+                            <h1 class="text-3xl font-bold text-gray-800 mb-2">{{ $book->title}}</h1>
                             <div class="flex items-center mb-4">
                                 <div class="flex mr-4">
-                                    @for($i = 0; $i < floor($book->rating ?? 4); $i++)
+                                    @for($i = 0; $i < rand(1,5); $i++)
                                         <span class="text-yellow-500">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                              viewBox="0 0 20 20" fill="currentColor">
@@ -23,7 +23,7 @@
                                         </svg>
                                     </span>
                                     @endfor
-                                    @if(($book->rating ?? 4) - floor($book->rating ?? 4) >= 0.5)
+                                    @if(($book->rating ?? 4) - rand(1,5) ?? 4) >= 0.5)
                                         <span class="text-yellow-500">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
                                              viewBox="0 0 20 20" fill="currentColor">
@@ -32,18 +32,18 @@
                                         </svg>
                                     </span>
                                     @endif
-                                    <span class="text-gray-700 ml-1">{{ $book->rating ?? '4.5' }}/5</span>
+                                    <span class="text-gray-700 ml-1">{{ $book->rating ?? rand(1,5) }}/5</span>
                                 </div>
                             </div>
                             <div class="mb-4 ">
                                 <p class="text-gray-600 text-sm md:text-lg">
-                                    <span class="font-semibold">Yazar:</span> {{ $book->author ?? 'Yazar Adı' }}
+                                    <span class="font-semibold">Yazar:</span> {{ $book->author}}
                                 </p>
                                 <p class="text-gray-600 text-sm md:text-lg">
-                                    <span class="font-semibold">Sayfa Sayısı:</span> {{ $book->pages ?? '256' }} sayfa
+                                    <span class="font-semibold">Sayfa Sayısı:</span> {{ $book->pages }} sayfa
                                 </p>
                                 <p class=" text-gray-600 text-sm md:text-lg">
-                                    <span class="font-semibold">Kategori:</span> {{ $book->category ?? 'Roman' }}
+                                    <span class="font-semibold">Kategori:</span> {{ $book->category->title }}
                                 </p>
                             </div>
                         </div>
@@ -52,16 +52,13 @@
                         <div class="mb-6">
                             <h3 class="text-xl font-semibold text-gray-800 mb-2">Kitap Özeti</h3>
                             <p class="text-gray-600 leading-relaxed text-sm md:text-lg">
-                                {{ $book->summary ?? 'Bu kitap, okuyucuları sürükleyici bir maceranın içine çeken etkileyici bir hikaye sunuyor. Karakterlerin derinliği ve olayların akışı, okuyucuları ilk sayfadan son sayfaya kadar kendine bağlıyor. Kitabın ana teması, insanın kendini keşfetme yolculuğu ve hayatta karşılaştığı zorluklarla yüzleşmesi üzerine kurulu.' }}
+                                {{ $book->description }}
                             </p>
                         </div>
                     </div>
                     <div class="mt-auto">
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-3xl font-bold text-blue-600">{{ $book->price ?? '45,99' }} ₺</span>
-                            @if(isset($book->old_price))
-                                <span class="text-lg line-through text-gray-500">{{ $book->old_price }} ₺</span>
-                            @endif
+                            <span class="text-3xl font-bold text-blue-600">{{ $book->price }} ₺</span>
                         </div>
 
                         <div class="flex gap-4">
@@ -80,17 +77,17 @@
                     <h2 class="text-2xl font-bold mb-6 text-gray-800">Benzer Kitaplar</h2>
                     <div class="swiper bestsellers-slider">
                         <div class="swiper-wrapper">
-                            @for ($i = 1; $i <= 8; $i++)
+                            @foreach ($books as $book)
                                 <div class="swiper-slide py-5">
                                     <div class="bg-white shadow-md py-3 rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                                        <img src="https://picsum.photos/220/300?random={{ $i }}" alt="Kitap {{ $i }}" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
+                                        <img src="{{$book->getFirstMediaUrl('book_cover')}}" alt="Kitap" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
                                         <div class="p-4 roundex-xl">
-                                            <a href="{{route('bookDetail')}}">
-                                                <h3 class="font-semibold mb-1 text-gray-800">Kitap Başlığı {{ $i }}</h3>
+                                            <a href="{{route('bookDetail', $book->id)}}">
+                                                <h3 class="font-semibold mb-1 text-gray-800">{{$book->title}}</h3>
                                             </a>
-                                            <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
+                                            <p class="text-sm text-gray-600 mb-2">{{$book->author}}</p>
                                             <div class="flex justify-between items-center">
-                                                <span class="font-bold text-blue-600">{{ rand(15, 75) }} ₺</span>
+                                                <span class="font-bold text-blue-600">{{$book->price }} ₺</span>
                                                 <div class="flex items-center">
                                             <span class="text-yellow-500 mr-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -104,7 +101,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endfor
+                            @endforeach
                         </div>
                         <div class="swiper-button-next bestsellers-next"></div>
                         <div class="swiper-button-prev bestsellers-prev"></div>

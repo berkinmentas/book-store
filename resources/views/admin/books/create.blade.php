@@ -17,10 +17,14 @@
                         <div class="col-span-1 md:col-span-4">
                             <div class="mb-5">
                                 <label class="block text-lg font-semibold mb-2" for="category">{{ __('Kategori') }}</label>
-                                <input type="text" id="category" name="category" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="{{__('Kategori')}}">
+                                <select class="form-select input-tags" id="category_id" name="category_id">
+                                    <option value="">{{ __('Seçiniz') }}</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{$category->title}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-
                         <div class="col-span-1 md:col-span-4">
                             <div class="mb-5">
                                 <label class="block text-lg font-semibold mb-2" for="author">{{ __('Yazar') }}</label>

@@ -24,23 +24,14 @@
                     <a href="/" class="text-xl font-bold text-indigo-600">Kitap Pazarı</a>
                 </div>
                 <div class="hidden md:flex md:items-center md:space-x-4">
-                    <div class="relative group">
-                        <a href="{{route("category")}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Roman</a>
-                    </div>
-
-                    <div class="relative group">
-                        <a href="{{route("category")}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Hikaye</a>
-                    </div>
-
-                    <div class="relative group">
-                        <a href="{{route("category")}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Kişisel Gelişim</a>
-                    </div>
-
-                    <div class="relative group">
-                        <a href="{{route("category")}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Diğer</a>
-                    </div>
+                    @foreach($categories as $category)
+                        <div class="relative group">
+                            <a href="{{route("category", $category->id)}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">{{$category->title}}</a>
+                        </div>
+                    @endforeach
                 </div>
 
+                @if(auth()->user())
                 <div class="hidden md:flex md:items-center">
                     <div class="relative ml-3 group">
                         <button class="flex items-center text-sm rounded-full focus:outline-none">
@@ -51,16 +42,22 @@
                         </button>
                         <div class="absolute right-0  w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block z-10">
                             <div class="py-1">
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profilimi Düzenle</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Siparişlerim</a>
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Favorilerim</a>
+                                <div class="block px-4 py-2 text-sm text-gray-700 ">{{auth()->user()->name}}</div>
                                 <hr class="my-1">
-                                <a href="{{route('comingSoon')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çıkış Yap</a>
+                                <a href="{{route('auth.logout')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Çıkış Yap</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                @else
+                    <div class="hidden md:flex md:items-center md:space-x-4">
+                        <div class="relative group">
+                            <a href="{{route('auth.login-page')}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Giriş Yap</a>
+                            <span class="px-1">/</span>
+                            <a href="{{route('auth.register-page')}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Kayıt Ol</a>
+                        </div>
+                    </div>
+                @endif
 
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
@@ -136,7 +133,67 @@
             </div>
         </div>
     </nav>
+    @if(auth()->user())
+        <button id="open-cart" class="fixed bottom-6 right-6 z-50 bg-indigo-600 hover:bg-indigo-700 text-white p-4 rounded-full shadow-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7h13l-1.5-7M7 13h10"></path>
+            </svg>
+        </button>
 
+        <div id="cart-panel" class="fixed top-0 right-0 w-80 max-w-full h-full pb-8 bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-50">
+            <div class="flex items-center justify-between p-4 border-b">
+                <h2 class="text-lg font-semibold">Sepetiniz</h2>
+                <button id="close-cart" class="text-gray-600 hover:text-red-600">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-4 overflow-y-auto h-[calc(100%-150px)]">
+                @forelse(session('cart', []) as $book)
+                    <div class="flex items-center mb-4">
+                        <img src="{{ $book['image']}}" alt="{{$book['title']}}" class="w-12 h-16 object-cover rounded mr-3">
+                        <div>
+                            <h4 class="font-semibold text-sm">{{$book['title']}}</h4>
+                            <p class="text-xs text-gray-500">{{$book['price']}} ₺</p>
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-sm text-gray-500">Sepetiniz boş.</p>
+                @endforelse
+            </div>
+
+            <div class="p-4 border-t">
+                <a href="{{route('cart.index')}}" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded mb-2">Sepete Git</a>
+                <form method="POST" action="{{route('cart.clear')}}">
+                    @csrf
+                    <button class="w-full text-center bg-red-500 hover:bg-red-600 text-white py-2 rounded">Sepeti Temizle</button>
+                </form>
+            </div>
+        </div>
+    @endif
+    @push("js-stack")
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const openCartBtn = document.getElementById("open-cart");
+                const closeCartBtn = document.getElementById("close-cart");
+                const cartPanel = document.getElementById("cart-panel");
+
+                if(openCartBtn && closeCartBtn && cartPanel){
+                    openCartBtn.addEventListener("click", () => {
+                        cartPanel.classList.remove("translate-x-full");
+                        cartPanel.classList.add("translate-x-0");
+                    });
+
+                    closeCartBtn.addEventListener("click", () => {
+                        cartPanel.classList.add("translate-x-full");
+                        cartPanel.classList.remove("translate-x-0");
+                    });
+                }
+            });
+        </script>
+    @endpush
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobile-menu-button');

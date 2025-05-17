@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'category'=>'required|string|max:255',
+            'category_id'=>'required|exists:categories,id',
             'author' => 'nullable|string|max:255',
             'publisher' => 'nullable|string|max:255',
             'year' => 'nullable|string|max:255',

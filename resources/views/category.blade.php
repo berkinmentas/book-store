@@ -8,7 +8,7 @@
                      src="{{\Illuminate\Support\Facades\Vite::asset("resources/images/book.png")}}" alt="book image">
             </div>
             <div class="font-extrabold text-[4rem] text-white">
-                <div>Roman</div>
+                <div>{{$category->title}}</div>
                 <div>Kategorisi</div>
                 <div>Kitaplari</div>
             </div>
@@ -17,16 +17,16 @@
             <div class="mb-12">
                 <h2 class="text-2xl font-bold mb-6 text-gray-800">En Çok Satan Kitaplar</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    @for($i = 0; $i<12; $i++)
+                    @foreach($books as $book)
                     <div class="bg-white shadow-md py-3 rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                        <img src="https://picsum.photos/220/300?random={{ rand(1,40) }}" alt="Kitap {{ rand(1,40) }}" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
+                        <img src="{{$book->getFirstMediaUrl('book_cover')}}" alt="Kitap" class="w-full h-64 object-cover rounded-xl  overflow-hidden">
                         <div class="p-4 roundex-xl">
-                            <a href="{{route('bookDetail')}}">
-                                <h3 class="font-semibold mb-1 text-gray-800">Kitap Başlığı {{ rand(1,40) }}</h3>
+                            <a href="{{route('bookDetail', $book->id)}}">
+                                <h3 class="font-semibold mb-1 text-gray-800">{{$book->title}}</h3>
                             </a>
-                            <p class="text-sm text-gray-600 mb-2">Yazar Adı</p>
+                            <p class="text-sm text-gray-600 mb-2">{{$book->author}}</p>
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-blue-600">{{ rand(15, 75) }} ₺</span>
+                                <span class="font-bold text-blue-600">{{ $book->price }} ₺</span>
                                 <div class="flex items-center">
                                             <span class="text-yellow-500 mr-1">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"
@@ -42,7 +42,7 @@
                             </button>
                         </div>
                     </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>

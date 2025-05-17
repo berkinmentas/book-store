@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\File;
@@ -15,7 +16,7 @@ class Book extends Model implements HasMedia
 
     protected $fillable = [
         'title',
-        'category',
+        'category_id',
         'author',
         'publisher',
         'year',
@@ -25,6 +26,10 @@ class Book extends Model implements HasMedia
         'price',
     ];
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
     public function registerMediaCollections(): void
     {
         $this

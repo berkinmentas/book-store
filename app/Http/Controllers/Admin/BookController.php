@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Book\StoreRequest;
 use App\Http\Requests\Admin\Book\UpdateRequest;
 use App\Models\Book;
 use App\Helpers\Helper;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -35,7 +36,7 @@ class BookController extends Controller
             $model = Book::query()->select([
                 'id',
                 'title',
-                'category',
+                'category_id',
                 'author',
                 'publisher',
                 'price',
@@ -60,7 +61,10 @@ class BookController extends Controller
                 ->addColumn('created_at_formatted', function(Book $book) {
                     return $book->created_at->format('d.m.Y H:i');
                 })
-                ->escapeColumns(['title', 'category', 'author', 'publisher']) // XSS koruması için
+                ->editColumn('category_id', function(Book $book) {
+                    return $book->category->title;
+                })
+                ->escapeColumns(['title', 'category_id', 'author', 'publisher']) // XSS koruması için
                 ->rawColumns(['actions'])
                 ->make(true);
         } catch (\Exception $e) {
@@ -75,7 +79,10 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('admin.books.create');
+        $categories = Category::all();
+        return view('admin.books.create',[
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -92,7 +99,7 @@ class BookController extends Controller
 
             $book = Book::create([
                 'title' => $validated['title'],
-                'category' => $validated['category'],
+                'category_id' => $validated['category_id'],
                 'author' => $validated['author'] ?? null,
                 'publisher' => $validated['publisher'] ?? null,
                 'year' => $validated['year'] ?? null,
@@ -155,8 +162,11 @@ class BookController extends Controller
     public function edit(Book $book)
     {
         try {
+            $categories = Category::all();
+
             return view('admin.books.edit', [
                 'book' => $book,
+                'categories' => $categories
             ]);
         } catch (\Exception $e) {
             Log::error('Book edit error: ' . $e->getMessage());
@@ -179,7 +189,7 @@ class BookController extends Controller
 
             $updated = $book->update([
                 'title' => $validated['title'],
-                'category' => $validated['category'],
+                'category_id' => $validated['category_id'],
                 'author' => $validated['author'] ?? $book->author,
                 'publisher' => $validated['publisher'] ?? $book->publisher,
                 'year' => $validated['year'] ?? $book->year,
