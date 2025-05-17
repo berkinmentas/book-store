@@ -13,6 +13,7 @@ class HomeController extends Controller
         $categories = Category::get();
         return view('home', [
             'books' => Book::all(),
+            'categories' => $categories,
         ]);
     }
 }

@@ -24,7 +24,7 @@
                     <a href="/" class="text-xl font-bold text-indigo-600">Kitap Pazarı</a>
                 </div>
                 <div class="hidden md:flex md:items-center md:space-x-4">
-                    @foreach($categories as $category)
+                    @foreach($bookCategories as $category)
                         <div class="relative group">
                             <a href="{{route("category", $category->id)}}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">{{$category->title}}</a>
                         </div>

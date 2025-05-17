@@ -19,8 +19,8 @@ Route::get('/test', function () { return view('test'); })->name('test');
 Route::prefix('auth')->name('auth.')->group(function () {
     Route::get('/login-page', [LoginController::class, 'loginPageShow'])->name('login-page');
     Route::get('/register-page', [LoginController::class, 'registerPageShow'])->name('register-page');
-    Route::post('/login', [LoginController::class, 'login'])->name('login')->middleware('throttle:3,5');
-    Route::post('/register', [LoginController::class, 'register'])->name('register')->middleware('throttle:3,5');
+    Route::post('/login', [LoginController::class, 'login'])->name('login')->middleware('throttle:3,1');
+    Route::post('/register', [LoginController::class, 'register'])->name('register');
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
 

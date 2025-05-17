@@ -48,7 +48,7 @@
                             if (e.status === 429) {
                                 Swal.fire({
                                     title: "{{ __('Çok Fazla İstek!') }}",
-                                    text: "{{ __('5 dakika içerisinde en fazla 3 kez talepte bulunabilirsiniz.') }}",
+                                    text: "{{ __('1 dakika içerisinde en fazla 3 kez talepte bulunabilirsiniz.') }}",
                                     icon: "warning",
                                     confirmButtonText: "{{ __('Kapat') }}"
                                 });
@@ -62,6 +62,8 @@
                                 $projects.find("button[type=submit]").removeAttr("disabled")
                             }
                             else {
+                                $projects.find("button[type=submit]").removeAttr("disabled")
+
                             }
                         }
                     });

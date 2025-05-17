@@ -75,7 +75,7 @@
                                             <span class="font-bold text-blue-600">{{$book->price}} ₺</span>
                                             <span class="text-sm text-gray-500">{{round($book->created_at->diffInDays(\Carbon\Carbon::today(), false))}} gün önce</span>
                                         </div>
-                                        <button class="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                        <button  data-id="{{ $book->id }}" class="add-to-cart w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
                                             Sepete Ekle
                                         </button>
                                     </div>
@@ -119,7 +119,7 @@
                                             <span class="font-bold text-blue-600">{{ $book->price }} ₺</span>
                                             <span class="text-sm text-gray-500">Durum: {{ ['Çok İyi', 'İyi', 'Normal'][rand(0, 2)] }}</span>
                                         </div>
-                                        <button class="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                        <button  data-id="{{ $book->id }}" class="add-to-cart w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
                                             Sepete Ekle
                                         </button>
                                     </div>

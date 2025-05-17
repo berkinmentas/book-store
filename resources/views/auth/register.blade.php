@@ -52,8 +52,26 @@
                             window.location = "{{ route('home') }}";
                         },
                         error: function (e) {
-                            $projects.find("button[type=submit]").removeAttr("disabled")
-                            ajaxDefaultErrorCallback(e);
+                            if (e.status === 429) {
+                                Swal.fire({
+                                    title: "{{ __('Çok Fazla İstek!') }}",
+                                    text: "{{ __('1 dakika içerisinde en fazla 3 kez talepte bulunabilirsiniz.') }}",
+                                    icon: "warning",
+                                    confirmButtonText: "{{ __('Kapat') }}"
+                                });
+                            }else if (e.status === 422){
+                                Swal.fire({
+                                    title: "{{ __('Hata') }}",
+                                    text: e.responseJSON.message,
+                                    icon: "warning",
+                                    confirmButtonText: "{{ __('Kapat') }}"
+                                });
+                                $projects.find("button[type=submit]").removeAttr("disabled")
+                            }
+                            else {
+                                $projects.find("button[type=submit]").removeAttr("disabled")
+
+                            }
                         }
                     });
                 });

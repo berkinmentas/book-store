@@ -63,7 +63,7 @@
 
                         <div class="flex gap-4">
                             <button
-                                class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold">
+                                data-id="{{ $book->id }}" class="add-to-cart flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold">
                                 Sepete Ekle
                             </button>
                             <button
@@ -97,7 +97,7 @@
                                                     <span class="text-gray-700">{{ rand(30, 50) / 10 }}</span>
                                                 </div>
                                             </div>
-                                            <button class="w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">Sepete Ekle</button>
+                                            <button  data-id="{{ $book->id }}" class="add-to-cart w-full mt-3 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">Sepete Ekle</button>
                                         </div>
                                     </div>
                                 </div>
