@@ -256,7 +256,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">KitapDünyası</h3>
+                    <h3 class="text-xl font-bold mb-4">Kitap Pazarı</h3>
                     <p class="text-gray-300">İkinci el kitapların güvenilir adresi. Binlerce kitaba uygun fiyatlarla ulaşabilirsiniz.</p>
                 </div>
                 <div>
@@ -287,7 +287,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 KitapDünyası - Tüm hakları saklıdır.</p>
+                <p>&copy; 2025 Kitap Pazarı - Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>
