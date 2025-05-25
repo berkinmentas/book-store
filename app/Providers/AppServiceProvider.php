@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,8 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $bookCategories = Category::query()->take(6)->get();
-
-        View::share('bookCategories', $bookCategories);
+        if (Schema::hasTable('categories')) {
+            $bookCategories = Category::query()->take(6)->get();
+            View::share('bookCategories', $bookCategories);
+        }
     }
 }

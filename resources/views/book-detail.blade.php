@@ -5,9 +5,7 @@
             <div class="bg-white shadow-lg rounded-xl overflow-hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6">
                     <div class="flex justify-center items-center h-36">
-                        <img src="{{ $book->getFirstMediaUrl('book_cover')}}"
-                             alt="Kitap Görseli"
-                             class=" h-full object-cover rounded-xl shadow-md">
+                        <img src="{{ $book->getFirstMediaUrl('book_cover')}}" alt="Kitap Görseli" class=" h-full object-cover rounded-xl shadow-md">
                     </div>
                     <div class="grid grid-cols-2">
                         <div>
