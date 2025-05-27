@@ -30,10 +30,10 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function datatable()
+    public function datatable(Request $request)
     {
         try {
-            $model = Book::query()->select([
+            $model = Book::query()->where('user_id', auth()->id())->select([
                 'id',
                 'title',
                 'category_id',
@@ -99,6 +99,7 @@ class BookController extends Controller
 
             $book = Book::create([
                 'title' => $validated['title'],
+                'user_id' => auth()->id(),
                 'category_id' => $validated['category_id'],
                 'author' => $validated['author'] ?? null,
                 'publisher' => $validated['publisher'] ?? null,
@@ -190,6 +191,7 @@ class BookController extends Controller
             $updated = $book->update([
                 'title' => $validated['title'],
                 'category_id' => $validated['category_id'],
+                'user_id' => auth()->id(),
                 'author' => $validated['author'] ?? $book->author,
                 'publisher' => $validated['publisher'] ?? $book->publisher,
                 'year' => $validated['year'] ?? $book->year,

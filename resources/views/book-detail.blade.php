@@ -55,6 +55,8 @@
                     <div class="mt-auto">
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-3xl font-bold text-blue-600">{{ $book->price }} ₺</span>
+                            <span class="text-2xl font-bold text-blue-600">Satıcı : {{ $book->user->name }}</span>
+
                         </div>
 
                         <div class="flex gap-4">

@@ -9,7 +9,7 @@ class BookController extends Controller
 {
     public function show(Book $book)
     {
-        $books = Book::where('category_id', $book->category_id)->get();
+        $books = Book::where('category_id', $book->category_id)->with('user')->get();
         return view('book-detail', [
             'book' => $book,
             'books' => $books,

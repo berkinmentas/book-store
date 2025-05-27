@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('author')->nullable();
             $table->string('publisher')->nullable();
             $table->string('year')->nullable();

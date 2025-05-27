@@ -22,7 +22,7 @@ class LoginController extends Controller
         try {
             $credentials = $request->only('email', 'password');
 
-            if (!Auth::guard('admin')->attempt($credentials))
+            if (!Auth::guard('web')->attempt($credentials))
                 throw new \Exception(__('Girdiğiniz bilgiler ile eşleşen hesap bulunamadı.'));
             $request->session()->regenerate();
             return response()->json();

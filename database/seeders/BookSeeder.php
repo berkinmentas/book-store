@@ -14,6 +14,7 @@ class BookSeeder extends Seeder
             [
                 'title' => 'Sefiller',
                 'category_id' => 1,
+                'user_id' => 1,
                 'author' => 'Victor Hugo',
                 'publisher' => 'Can Yayınları',
                 'year' => '1862',
@@ -26,6 +27,7 @@ class BookSeeder extends Seeder
             [
                 'title' => '1984',
                 'category_id' => 2,
+                'user_id' => 1,
                 'author' => 'George Orwell',
                 'publisher' => 'İthaki Yayınları',
                 'year' => '1949',
@@ -41,6 +43,7 @@ class BookSeeder extends Seeder
             $book = Book::create([
                 'title' => $data['title'],
                 'category_id' => $data['category_id'],
+                'user_id' => $data['user_id'],
                 'author' => $data['author'],
                 'publisher' => $data['publisher'],
                 'year' => $data['year'],
